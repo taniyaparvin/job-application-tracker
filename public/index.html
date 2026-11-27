@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Job Application Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <h1>Job Application Tracker</h1>
+      <button type="button" id="addBtn" class="btn primary">+ Add Job</button>
+    </header>
+
+    <section class="stats">
+      <div class="card"><div class="label">Total</div><div class="value" id="statTotal">0</div></div>
+      <div class="card"><div class="label">Applied</div><div class="value" id="statApplied">0</div></div>
+      <div class="card"><div class="label">Interview</div><div class="value" id="statInterview">0</div></div>
+      <div class="card"><div class="label">Offers</div><div class="value" id="statOffers">0</div></div>
+    </section>
+
+    <section class="filters">
+      <input type="text" id="search" aria-label="Search company" placeholder="Search company...">
+      <select id="statusFilter" aria-label="Filter by status">
+        <option value="">All statuses</option>
+        <option>Wishlist</option>
+        <option>Applied</option>
+        <option>Interview</option>
+        <option>Offer</option>
+        <option>Rejected</option>
+      </select>
+    </section>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Role</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+      <p id="emptyMsg" class="empty" hidden>No applications found. Click "+ Add Job" to add one.</p>
+    </div>
+
+  </div>
+
+  <!-- Add / Edit popup -->
+  <dialog id="jobDialog">
+    <form id="jobForm">
+      <h2 id="dialogTitle">Add Application</h2>
+
+      <label for="company">Company</label>
+      <input type="text" id="company" required>
+
+      <label for="role">Role</label>
+      <input type="text" id="role" required>
+
+      <label for="link">Link</label>
+      <input type="url" id="link" placeholder="https://...">
+
+      <label for="dateApplied">Date</label>
+      <input type="date" id="dateApplied">
+
+      <label for="status">Status</label>
+      <select id="status">
+        <option>Wishlist</option>
+        <option selected>Applied</option>
+        <option>Interview</option>
+        <option>Offer</option>
+        <option>Rejected</option>
+      </select>
+
+      <label for="notes">Notes</label>
+      <textarea id="notes" rows="3"></textarea>
+
+      <div class="form-actions">
+        <button type="button" id="cancelBtn" class="btn">Cancel</button>
+        <button type="submit" class="btn primary">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
